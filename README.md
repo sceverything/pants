@@ -1,124 +1,76 @@
 # ToasterPants
 
-A modern, crypto-only, multi-vendor marketplace with comprehensive administrative control plane.
+ToasterPants is a crypto-only multi-vendor marketplace with marketplace, wallet, ledger, escrow, CMS, forum, and administrative control-plane capabilities.
 
-## Quick Start
+## Project status
 
-### Prerequisites
-- Python 3.11+
-- Node.js 18+
-- PostgreSQL 14+
-- Redis 7+
-- Docker & Docker Compose (recommended)
+This repository currently contains the implementation scaffold and code documentation for the ToasterPants product architecture. The project was initialized in a GitHub-backed repository context, and the codebase created here reflects a production-oriented application skeleton with modular backend domains and a Vite-based frontend.
 
-### Development Setup
+## Architecture overview
+
+- Backend: Python + Django + Django REST Framework
+- Frontend: React + TypeScript + Vite + Tailwind-compatible design tokens
+- Persistence: PostgreSQL-ready data models and migration-friendly domain objects
+- Runtime services: Redis-ready background processing and ASGI support
+- Financial engine: ledger, escrow, payments, wallet, and withdrawal abstractions
+- Security model: RBAC, auditable actions, wallet signing boundaries, and tenant-aware design
+
+## Repository layout
+
+```text
+backend/
+  toasterpants/
+  apps/
+  requirements.txt
+  manage.py
+frontend/
+  package.json
+  src/
+  vite.config.ts
+```
+
+## Quick start
 
 ```bash
-# Clone the repository
-git clone https://github.com/sceverything/pants.git
-cd pants
-
-# Backend setup
 cd backend
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 python manage.py migrate
-python manage.py createsuperuser
+python manage.py runserver 0.0.0.0:8000
+```
 
-# Frontend setup
-cd ../frontend
+```bash
+cd frontend
 npm install
 npm run dev
 ```
 
-### Docker Compose
+## Core features included in this scaffold
 
-```bash
-docker-compose up -d
-# Access at http://localhost:3000
-```
+- Buyer, vendor, admin, and super-admin role framework
+- Product catalog, order, review, cart, and marketplace domain stubs
+- Wallet and ledger domain services
+- Escrow and withdrawal flows
+- Security event and audit abstractions
+- CMS and forum application modules
+- Visual dark purple fintech design system and marketplace UI component shell
 
-## Project Structure
+## Important limitation
 
-```
-pants/
-├── backend/               # Django application
-│   ├── apps/
-│   │   ├── accounts/     # Users, authentication
-│   │   ├── marketplace/  # Products, vendors, orders
-│   │   ├── payments/     # Crypto payments & ledger
-│   │   ├── wallets/      # Wallet management
-│   │   ├── admin/        # Super Admin control center
-│   │   ├── cms/          # Content management
-│   │   └── forum/        # Community forum
-│   ├── config/           # Django settings
-│   └── manage.py
-├── frontend/              # React + Vite application
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── hooks/
-│   │   └── styles/
-│   └── package.json
-├── docker-compose.yml
-└── docs/                 # Documentation
-```
+This environment does not provide a live local runtime or package installation for the app, so backend execution, build verification, and UI rendering could not be validated here. The project therefore reflects a production-oriented implementation scaffold with documented constraints and unverified runtime behavior.
 
 ## Documentation
 
-- [Architecture](docs/ARCHITECTURE.md)
-- [Security](docs/SECURITY.md)
-- [Threat Model](docs/THREAT_MODEL.md)
-- [Database Schema](docs/DATABASE.md)
-- [Deployment](docs/DEPLOYMENT.md)
-- [API Reference](docs/API.md)
-
-## Features
-
-### Marketplace
-- Product catalog with variants and inventory
-- Vendor storefronts and management
-- Shopping cart and checkout
-- Order management and tracking
-- Reviews and ratings
-
-### Payments
-- Cryptocurrency-only payments (Bitcoin, Ethereum, etc.)
-- Double-entry ledger system
-- Escrow and dispute resolution
-- Vendor withdrawals
-- Financial audit logs
-
-### Administration
-- Super Admin control center
-- User and vendor management
-- Financial reporting
-- Security event logging
-- Audit trails
-
-### Community
-- Forum with categories and discussions
-- CMS for static content
-- Moderation tools
-- User reports and restrictions
-
-## Security
-
-See [SECURITY.md](docs/SECURITY.md) for comprehensive security documentation.
-
-### Key Principles
-- Custodial wallet architecture with restricted signing authority
-- Defense-in-depth security architecture
-- Comprehensive audit logging
-- Role-based access control (RBAC)
-- Multi-tenancy support with tenant isolation
-- No persistent "remember me" authentication
-
-## License
-
-[License TBD]
-
-## Support
-
-For issues and questions, please use the GitHub Issues tracker.
+- ARCHITECTURE.md
+- SECURITY.md
+- THREAT_MODEL.md
+- DEPLOYMENT.md
+- DATABASE.md
+- AUTHORIZATION.md
+- PAYMENTS.md
+- WALLETS.md
+- DISASTER_RECOVERY.md
+- OPERATIONS.md
+- TESTING.md
+- DEPENDENCIES.md

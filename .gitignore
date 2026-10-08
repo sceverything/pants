@@ -1,0 +1,17 @@
+# .gitignore
+
+__pycache__/
+*.py[cod]
+*.sqlite3
+.env
+.venv/
+venv/
+node_modules/
+dist/
+coverage/
+.DS_Store
+*.log
+.idea/
+.vscode/
+.pytest_cache/
+.mypy_cache/
